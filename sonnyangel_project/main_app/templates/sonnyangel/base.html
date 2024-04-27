@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}">
+    <title>Sonny Angel Collector</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <ul>
+                    <li><a href="about">About</a></li>
+                    <li><a href="/sonnyangel">View all my Sonny Angels</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        All Rights Reserved, &copy; {% now "Y" %} Sony Angel Collector
+  </footer>
+    </footer>
+</body>
+</html>
