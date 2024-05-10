@@ -5,11 +5,15 @@
 
 {% for sonnyangel in sonnyangels%}
 <div>
+    <a href="{% url 'detail' sonnyangel.id %}">
     <div>
         <span>Series: {{ sonnyangel.series }}</span>
         <p>Sonny Angel Name: {{ sonnyangel.sonnyangelname }}</p>
-        <img src="{sonnyangel.img}"">
+        <p>Sonny Angel Description: {{sonnyangel.description}}</p>
+        {% load static %}
+        <img src="{{sonnyangel.img.url}}">
     </div>
+    </a>
 </div>
 {% endfor %}
 {% endblock%}

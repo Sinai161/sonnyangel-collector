@@ -1,0 +1,69 @@
+{% extends 'sonnyangel/base.html' %}
+{% block content %}
+
+<h1>Sonnyangel Details</h1>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ sonnyangel.series }}</span>
+    <p>Sonny Angel Name: {{ sonnyangel.sonnyangelname }}</p>
+    <p>Sonny Angel Description: {{sonnyangel.description}}</p>
+    {% load static %}
+    <img src="{{sonnyangel.img.url}}" >
+    <a href="{% url 'sonnyangel_update' sonnyangel.id %}">Edit</a>
+    <a href="{% url 'sonnyangel_delete' sonnyangel.id %}">Delete</a>
+  </div>
+</div>
+<div class="col s6">
+  <form action="{% url 'add_sonnyangel_feeding' sonnyangel.id %}" method="POST">
+    {% csrf_token %}
+    {{ feeding_form.as_p }}
+    <input type="submit" class="btn" value="Add Sonnyangel Food">
+  </form>
+  <table class="striped">
+    <thead>
+      <tr><th>Food : </th><th>Description :</th></tr>
+    </thead>
+    <tbody>
+      {% for feeding in sonnyangel.feeding_set.all %}
+        <tr>
+          <td>{{feeding.food}}</td>  
+          <td>{{feeding.description}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div>
+  <div>
+    <h3>{{sonnyangel.sonnyangelname}}'s Accessories</h3>
+    {% if sonnyangel.accessories.count %}
+    {% for accessorie in sonnyangel.accessories.all %}
+    <span class="card-title">
+      A <span style="color: {{ accessories.color }}">{{ accessories.color }}</span> {{ accessorie.name }}
+    </span>
+  </div>
+  {% endfor %}
+  {% else %}
+  <h5>No Accessories</h5>
+  {% endif %}
+</div>
+<div class="col s6">
+  <h3>Available Accessories</h3>
+  {% if accessories.count %}
+    {% for accessorie in accessories.all %}
+          <span class="card-title">
+            A <span style="color: {{ accessorie.color }}">{{ accessorie.color }}</span> {{ accessorie.name }}
+          </span>
+          <form action="{% url 'assoc_accessories' sonnyangel.id accessorie.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn">Add</button>
+          </form>
+    {% endfor %}
+  {% else %}
+    <h5>{{sonnyangel.sonnyangelname}} Already Has All Accessories Available</h5>
+  {% endif %}
+</div>
+</div>
+
+{% endblock %}

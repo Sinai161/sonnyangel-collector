@@ -12,8 +12,9 @@
         <nav>
             <div>
                 <ul>
-                    <li><a href="about">About</a></li>
-                    <li><a href="/sonnyangel">View all my Sonny Angels</a></li>
+                    <li><a href="{% url 'about'%}">About</a></li>
+                    <li><a href="{% url 'sonnyangel_create' %}">Add a Sonnyangel</a></li>
+                    <li><a href="{% url 'index'%}">View all my Sonny Angels</a></li>
                 </ul>
             </div>
         </nav>

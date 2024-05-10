@@ -1,0 +1,17 @@
+{% extends 'sonnyangel/base.html' %}
+
+{% block content %}
+
+<h1>Accessories List</h1>
+
+{% for accessorie in accessorie_list %}
+  <a href="{% url 'accessories_detail' accessorie.id %}">
+    <div>
+        <span>{{ accessorie.name }}</span>
+        <p>{{ accessorie.color }}</p>
+        <p>{{accessorie.description}}</p>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}

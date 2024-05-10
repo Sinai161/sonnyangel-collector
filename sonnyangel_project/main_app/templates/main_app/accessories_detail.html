@@ -1,0 +1,15 @@
+{% extends 'sonnyangel/base.html' %}
+{% block content %}
+
+<h1>Accessorie Detail</h1>
+
+<div>
+    <span>{{ accessories.name }}</span>
+    <p>Color: {{accessories.color}}</p>
+    <p>Description: {{accessories.description}}</p>
+</div>
+<div>
+    <a href="{% url 'accessories_update' accessories.id %}">Edit</a>
+    <a href="{% url 'accessories_delete' accessories.id %}">Delete</a>
+</div>
+{% endblock %}
