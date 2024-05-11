@@ -56,7 +56,7 @@ def assoc_accessories(request, pk, accessories_pk):
 
 class SonnyangelCreate(CreateView):
     model = Sonnyangel
-    fields = ['name', 'breed', 'description','age']
+    fields = ['series', 'sonnyangelname', 'description','img']
 
 class SonnyangelUpdate(UpdateView):
     model = Sonnyangel
